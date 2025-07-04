@@ -19,7 +19,7 @@ body {
   font-size: var(--font-size);
   line-height: var(--line-height);
   margin: 0 auto;
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 2rem 1rem;
   max-width: 700px;
   transition: background 0.3s, color 0.3s;
 }
@@ -67,11 +67,11 @@ button, select {
   line-height: var(--line-height);
 }
 
-/* On small screens, remove max-width but keep light padding */
+/* On small screens, remove max-width and use same reduced padding */
 @media (max-width: 600px) {
   body {
     max-width: 100%;
-    padding: 3rem 1rem 2rem 1rem;
+    padding: 1.5rem 0.75rem;
     font-size: var(--font-size);
   }
 
