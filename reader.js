@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <select id="font-size">
         <option value="16px">Small</option>
         <option value="18px" selected>Medium</option>
-        <option value="20px">Large</option>
-        <option value="24px">Extra Large</option>
+        <option value="24px">Large</option>
+        <option value="36px">Extra Large</option>
       </select>
     </label>
     <label id="chapter-label" style="display:none;">Jump to Chapter:
