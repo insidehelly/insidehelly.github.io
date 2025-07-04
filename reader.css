@@ -4,7 +4,6 @@
   --text-color: #eeeeee;
   --font-size: 18px;
   --line-height: 1.6;
-  --max-width: 700px;
   --font-family: 'Georgia', serif;
   --link-color: #80cbc4;
 }
@@ -15,9 +14,9 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  margin: 0 auto;
-  padding: 3em 1em 2em 1em;
-  max-width: var(--max-width);
+  margin: 0;
+  padding: 3rem 1.25rem 2rem 1.25rem;
+  width: 100%;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -62,12 +61,10 @@ button, select {
   font-family: var(--font-family);
 }
 
-/* Mobile-specific fix: remove max-width and allow font resizing */
+/* Mobile-specific: drop max-width, keep padding light, respect font-size var */
 @media (max-width: 600px) {
   body {
-    max-width: none;
-    width: 100%;
-    padding: 3em 1em 2em 1em;
+    padding: 2.5rem 1rem 2rem 1rem;
     font-size: var(--font-size);
   }
 
