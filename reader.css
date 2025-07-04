@@ -8,15 +8,19 @@
   --link-color: #80cbc4;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  margin: 0;
-  padding: 3rem 1.25rem 2rem 1.25rem;
-  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem 2rem;
+  max-width: 700px;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -59,12 +63,15 @@ button, select {
 .userstuff, #chapters, .meta, .message {
   color: var(--text-color);
   font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 }
 
-/* Mobile-specific: drop max-width, keep padding light, respect font-size var */
+/* On small screens, remove max-width but keep light padding */
 @media (max-width: 600px) {
   body {
-    padding: 2.5rem 1rem 2rem 1rem;
+    max-width: 100%;
+    padding: 3rem 1rem 2rem 1rem;
     font-size: var(--font-size);
   }
 
