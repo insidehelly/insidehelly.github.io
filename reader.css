@@ -1,0 +1,80 @@
+
+:root {
+  --bg-color: #0f0f0f;
+  --text-color: #eeeeee;
+  --font-size: 18px;
+  --line-height: 1.6;
+  --max-width: 700px;
+  --font-family: 'Georgia', serif;
+  --link-color: #80cbc4;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  margin: 0 auto;
+  max-width: var(--max-width);
+  padding: 3em 1em 2em 1em;
+  transition: background 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--link-color);
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+blockquote {
+  border-left: 4px solid #444;
+  padding-left: 1em;
+  color: var(--text-color);
+  margin-left: 0;
+}
+
+button, select {
+  font-size: 1em;
+  margin: 0.25em;
+}
+
+#controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border-bottom: 1px solid #555;
+  padding: 0.5em 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.userstuff, #chapters, .meta, .message {
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 17px;
+    padding: 3em 0.75em 2em 0.75em;
+  }
+
+  #controls {
+    flex-direction: column;
+    align-items: stretch;
+    font-size: 0.95em;
+  }
+
+  button, select {
+    width: 100%;
+  }
+}
