@@ -16,8 +16,8 @@ body {
   font-size: var(--font-size);
   line-height: var(--line-height);
   margin: 0 auto;
-  max-width: var(--max-width);
   padding: 3em 1em 2em 1em;
+  max-width: var(--max-width);
   transition: background 0.3s, color 0.3s;
 }
 
@@ -49,7 +49,7 @@ button, select {
   background: var(--bg-color);
   color: var(--text-color);
   border-bottom: 1px solid #555;
-  padding: 0.5em 0.5em;
+  padding: 0.5em;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
@@ -62,10 +62,12 @@ button, select {
   font-family: var(--font-family);
 }
 
+/* Mobile-specific fix: remove max-width and allow font resizing */
 @media (max-width: 600px) {
   body {
-    max-width: 100%;
-    padding: 3em 1em;
+    max-width: none;
+    width: 100%;
+    padding: 3em 1em 2em 1em;
     font-size: var(--font-size);
   }
 
