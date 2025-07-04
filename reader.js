@@ -1,5 +1,32 @@
 
-// Load saved settings or defaults
+function insertControlsBar() {
+  if (document.getElementById('controls')) return; // already exists
+
+  const controls = document.createElement('div');
+  controls.id = 'controls';
+  controls.innerHTML = `
+    <select id="themeToggle">
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+
+    <select id="fontSizeSelect">
+      <option value="16px">Small</option>
+      <option value="18px" selected>Medium</option>
+      <option value="20px">Large</option>
+      <option value="22px">X-Large</option>
+    </select>
+
+    <select id="fontFamilySelect">
+      <option value="Georgia, serif" selected>Georgia</option>
+      <option value="Times New Roman, serif">Times New Roman</option>
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="'Courier New', monospace">Courier New</option>
+    </select>
+  `;
+  document.body.insertBefore(controls, document.body.firstChild);
+}
+
 function applySettings() {
   const theme = localStorage.getItem('theme') || 'dark';
   const fontSize = localStorage.getItem('fontSize') || '18px';
@@ -7,32 +34,36 @@ function applySettings() {
 
   document.documentElement.style.setProperty('--font-size', fontSize);
   document.documentElement.style.setProperty('--font-family', fontFamily);
-  document.body.className = theme;
 
-  document.getElementById('themeToggle').value = theme;
-  document.getElementById('fontSizeSelect').value = fontSize;
-  document.getElementById('fontFamilySelect').value = fontFamily;
+  document.body.classList.remove('light', 'dark');
+  document.body.classList.add(theme);
+
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) themeToggle.value = theme;
+
+  const fontSizeSelect = document.getElementById('fontSizeSelect');
+  if (fontSizeSelect) fontSizeSelect.value = fontSize;
+
+  const fontFamilySelect = document.getElementById('fontFamilySelect');
+  if (fontFamilySelect) fontFamilySelect.value = fontFamily;
 }
 
-// Set theme (light or dark)
 function setTheme(theme) {
-  document.body.className = theme;
+  document.body.classList.remove('light', 'dark');
+  document.body.classList.add(theme);
   localStorage.setItem('theme', theme);
 }
 
-// Set font size
 function setFontSize(size) {
   document.documentElement.style.setProperty('--font-size', size);
   localStorage.setItem('fontSize', size);
 }
 
-// Set font family
 function setFontFamily(family) {
   document.documentElement.style.setProperty('--font-family', family);
   localStorage.setItem('fontFamily', family);
 }
 
-// Build chapter jump menu if chapters exist
 function buildChapterMenu() {
   const chapters = document.querySelectorAll('h3.title');
   if (chapters.length === 0) return;
@@ -54,23 +85,33 @@ function buildChapterMenu() {
     location.hash = '#' + e.target.value;
   });
 
-  document.getElementById('controls').appendChild(chapterSelect);
+  const controls = document.getElementById('controls');
+  if (controls) controls.appendChild(chapterSelect);
 }
 
-// Event listeners
 window.addEventListener('DOMContentLoaded', () => {
+  insertControlsBar();
   applySettings();
   buildChapterMenu();
 
-  document.getElementById('themeToggle').addEventListener('change', (e) => {
-    setTheme(e.target.value);
-  });
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('change', (e) => {
+      setTheme(e.target.value);
+    });
+  }
 
-  document.getElementById('fontSizeSelect').addEventListener('change', (e) => {
-    setFontSize(e.target.value);
-  });
+  const fontSizeSelect = document.getElementById('fontSizeSelect');
+  if (fontSizeSelect) {
+    fontSizeSelect.addEventListener('change', (e) => {
+      setFontSize(e.target.value);
+    });
+  }
 
-  document.getElementById('fontFamilySelect').addEventListener('change', (e) => {
-    setFontFamily(e.target.value);
-  });
+  const fontFamilySelect = document.getElementById('fontFamilySelect');
+  if (fontFamilySelect) {
+    fontFamilySelect.addEventListener('change', (e) => {
+      setFontFamily(e.target.value);
+    });
+  }
 });
