@@ -64,8 +64,9 @@ button, select {
 
 @media (max-width: 600px) {
   body {
-    font-size: 17px;
-    padding: 3em 0.75em 2em 0.75em;
+    max-width: 100%;
+    padding: 3em 1em;
+    font-size: var(--font-size);
   }
 
   #controls {
