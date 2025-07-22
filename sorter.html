@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Severance Episode Sorter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Severance Episode Sorter</h1>
+
+    <div id="sorter">
+      <div class="header" style="display: none;">
+        <span id="battle-counter"></span>
+      </div>
+      <div class="progress-bar-container-container">
+        <div class="progress-bar-container"></div>
+        <img id="lumon-logo" src="img/lumon.png" height="100" />
+      </div>
+      <div class="options-container">
+        <div class="option" id="left-option">
+          </div>
+        <div class="option" id="right-option">
+          </div>
+      </div>
+
+      <div class="tie-container">
+        <button id="tie-button">Both are Equally Good (Tie)</button>
+        <br>
+        <br>
+        <button id="undo-button" disabled>Undo Last Choice</button>
+      </div>
+    </div>
+
+    <div id="results" style="display: none">
+        <button id="reset-button">Reset</button>
+      </div>
+
+    <script src="episodes.js"></script>
+    <script src="sorter.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sorter = new TournamentSorter(severanceEpisodes, {
+          selectors: {
+            leftOption: "#left-option",
+            rightOption: "#right-option",
+            tieButton: "#tie-button",
+            undoButton: "#undo-button",
+            battleCounter: "#battle-counter",
+            progressBar: "#progress-bar",
+            progressBarContainer: ".progress-bar-container",
+            sorterContainer: "#sorter",
+            resultContainer: "#results",
+            resetButton: "#reset-button"
+          },
+        });
+
+        sorter.start();
+      });
+    </script>
+  </body>
+</html>
