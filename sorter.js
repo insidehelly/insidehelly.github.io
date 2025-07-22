@@ -179,7 +179,7 @@ class TournamentSorter {
     this.elements.battleCounter.textContent = `Battle #${numQuestion}`;
     this.elements.progressBarContainer.innerHTML = `
     <div id="progress-bar"></div>
-    ${progress}% Complete
+    <div id="progress-percent">${progress}% Complete</div>
     `;
     document.querySelector("#progress-bar").style.width = `${progress}%`;
   }
